@@ -83,4 +83,12 @@ public class NutritionSearchServiceTest {
         assert results.get(1).equals(banana) : "Expected second item to be banana, but got " + results.get(1).name();
     }
 
+    @Test
+    public void testSearchNutritionDataForExactCalories() {
+        var request = NutritionSearchRequestFactory.newRequest(105, 105, List.of(), null, 1000);
+        var results = service.searchNutrition(request); 
+        assert results.size() == 1 : "Expected 1 item, but got " + results.size();
+        assert results.get(0).equals(banana) : "Expected first item to be banana, but got " + results.get(0).name();
+    }
+
 }

@@ -13,7 +13,7 @@ java -version
 
 git checkout -b "mohammed_durrani_branch"
 
-gradlew clean build
+gradlew clean build test
 
 gradlew test
 
