@@ -42,14 +42,28 @@ public class NutritionSearchServiceTest {
 
     @Test
     public void testSearchNutritionDataForMinCaloriesEdgeCase() {
-        var request = NutritionSearchRequestFactory.newRequest(95, 900, List.of(), null, 1000);
+        var request = NutritionSearchRequestFactory.newRequest(105, 900, List.of(), null, 1000);
         var results = service.searchNutrition(request);
-        assert results.size() == 3 : "Expected 3 items, but got " + results.size();
+        assert results.size() == 2 : "Expected 2 items, but got " + results.size();
     }
 
     @Test
     public void testSearchNutritionDataForMinCalories() {
         var request = NutritionSearchRequestFactory.newRequest(96, 900, List.of(), null, 1000);
+        var results = service.searchNutrition(request); 
+        assert results.size() == 2 : "Expected 2 items, but got " + results.size();
+    }
+
+    @Test
+    public void testSearchNutritionDataForMaxCaloriesEdgeCase() {
+        var request = NutritionSearchRequestFactory.newRequest(90, 105, List.of(), null, 1000);
+        var results = service.searchNutrition(request); 
+        assert results.size() == 2 : "Expected 2 items, but got " + results.size();
+    }
+    
+    @Test
+    public void testSearchNutritionDataForMaxCalories() {
+        var request = NutritionSearchRequestFactory.newRequest(90, 106, List.of(), null, 1000);
         var results = service.searchNutrition(request); 
         assert results.size() == 2 : "Expected 2 items, but got " + results.size();
     }
