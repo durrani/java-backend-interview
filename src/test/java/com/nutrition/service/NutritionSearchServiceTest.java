@@ -47,10 +47,10 @@ public class NutritionSearchServiceTest {
         assert results.size() == 3 : "Expected 3 items, but got " + results.size();
     }
 
-    // @Test
-    // public void testSearchNutritionDataForMinCalories() {
-    //     var request = NutritionSearchRequestFactory.newRequest(96, 900, List.of(), null, 1000);
-    //     var results = service.searchNutrition(request); 
-    //     assert results.size() == 2 : "Expected 2 items, but got " + results.size();
-    // }
+    @Test
+    public void testSearchNutritionDataForMinCalories() {
+        var request = NutritionSearchRequestFactory.newRequest(96, 900, List.of(), null, 1000);
+        var results = service.searchNutrition(request); 
+        assert results.size() == 2 : "Expected 2 items, but got " + results.size();
+    }
 }

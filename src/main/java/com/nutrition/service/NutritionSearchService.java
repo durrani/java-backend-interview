@@ -35,7 +35,7 @@ public final class NutritionSearchService {
         // handle UnsupportedOperationException from repository.loadNutritionData()
         try {
             return repository.loadNutritionData().stream()
-                .filter(item -> true)
+                .filter(item -> search(request, item))
                 .limit(request.limit())
                 .sorted(buildComparator(request))
                 .toList();
@@ -44,7 +44,12 @@ public final class NutritionSearchService {
             e.printStackTrace();
             return List.of();
         }
-    }    
+    }
+
+    private boolean search(NutritionSearchRequest request, Food item) {
+        return item.calories() >= request.minCalories();
+            
+    }
 
     private Comparator<Food> buildComparator(NutritionSearchRequest request) {
         return request.sorts().stream()
