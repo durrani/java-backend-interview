@@ -48,7 +48,8 @@ public final class NutritionSearchService {
 
     private boolean search(NutritionSearchRequest request, Food item) {
         return item.calories() >= request.minCalories() 
-            && item.calories() <= request.maxCalories();
+            && item.calories() <= request.maxCalories()
+            && (request.fatRating() == null || request.fatRating().equals(item.fatRating()));
             
     }
 

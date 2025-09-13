@@ -91,4 +91,35 @@ public class NutritionSearchServiceTest {
         assert results.get(0).equals(banana) : "Expected first item to be banana, but got " + results.get(0).name();
     }
 
+    @Test
+    public void testSearchNutritionDataForNoResults() {
+        var request = NutritionSearchRequestFactory.newRequest(400, 500, List.of(), null, 1000);
+        var results = service.searchNutrition(request); 
+        assert results.size() == 0 : "Expected 0 items, but got " + results.size();
+    }
+
+    @Test
+    public void testSearchNutritionDataForFatRatingLow() {
+        var request = NutritionSearchRequestFactory.newRequest(90, 400, List.of(), Food.FatRating.LOW.name(), 1000);
+        var results = service.searchNutrition(request); 
+        assert results.size() == 1 : "Expected 1 item, but got " + results.size();
+        assert results.get(0).equals(apple) : "Expected first item to be apple, but got " + results.get(0).name();
+    }
+
+    @Test
+    public void testSearchNutritionDataForFatRatingMedium() {
+        var request = NutritionSearchRequestFactory.newRequest(90, 400, List.of(), Food.FatRating.MEDIUM.name(), 1000);
+        var results = service.searchNutrition(request); 
+        assert results.size() == 1 : "Expected 1 item, but got " + results.size();
+        assert results.get(0).equals(banana) : "Expected first item to be banana, but got " + results.get(0).name();
+    }
+
+    @Test
+    public void testSearchNutritionDataForFatRatingHigh() {
+        var request = NutritionSearchRequestFactory.newRequest(90, 400, List.of(), Food.FatRating.HIGH.name(), 1000);
+        var results = service.searchNutrition(request); 
+        assert results.size() == 1 : "Expected 1 item, but got " + results.size();
+        assert results.get(0).equals(cheesburger) : "Expected first item to be cheeseburger, but got " + results.get(0).name();
+    }
+
 }
