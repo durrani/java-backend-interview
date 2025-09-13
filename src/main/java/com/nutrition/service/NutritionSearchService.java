@@ -32,12 +32,11 @@ public final class NutritionSearchService {
     }
 
     public List<Food> searchNutrition(NutritionSearchRequest request) {
-        // handle UnsupportedOperationException from repository.loadNutritionData()
         try {
             return repository.loadNutritionData().stream()
                 .filter(item -> search(request, item))
-                .limit(request.limit())
                 .sorted(buildComparator(request))
+                .limit(request.limit())
                 .toList();
         } catch (UnsupportedOperationException e) {
             // log the exception and return an empty list

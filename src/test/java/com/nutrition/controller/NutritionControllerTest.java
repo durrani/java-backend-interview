@@ -1,7 +1,6 @@
 package com.nutrition.controller;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -35,13 +34,10 @@ class NutritionControllerTest {
                 .accept(APPLICATION_JSON))
             .andExpect(status().isOk())
             .andExpect(content().contentType(APPLICATION_JSON))
-            // //print content()
-            // .andDo(result -> System.out.println(result.getResponse().getContentAsString()))
             .andExpect(content().json(readJsonFile("all-foods.json"), true));
     }
 
     @Nested
-    @Disabled("Until filtering is implemented")
     class FilteringTest {
 
         @Test
@@ -82,7 +78,6 @@ class NutritionControllerTest {
     }
 
     @Nested
-    // @Disabled("Until all steps implemented")
     class AllParamsTest {
 
         @Test

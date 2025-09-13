@@ -24,8 +24,8 @@ public class NutritionSearchServiceTest {
     private NutritionSearchService service;
 
     private Food apple = new Food("Apple", 95, 0.3, Food.FatRating.LOW, "0mg");
-    private Food banana =         new Food("Banana", 105, 0.4, Food.FatRating.MEDIUM, "0mg");
-    private Food cheesburger =         new Food("Cheeseburger", 303, 1.2, Food.FatRating.HIGH, "0mg");
+    private Food banana = new Food("Banana", 105, 0.4, Food.FatRating.MEDIUM, "0mg");
+    private Food cheesburger = new Food("Cheeseburger", 303, 1.2, Food.FatRating.HIGH, "0mg");
     
     @BeforeEach
     public void setUp() {
@@ -130,6 +130,14 @@ public class NutritionSearchServiceTest {
         assert results.get(0).equals(apple) : "Expected first item to be apple, but got " + results.get(0).name();
         assert results.get(1).equals(banana) : "Expected second item to be banana, but got " + results.get(1).name();
         assert results.get(2).equals(cheesburger) : "Expected third item to be cheeseburger, but got " + results.get(2).name();
+    }
+
+    @Test
+    public void testSearchNutritionDataForLimit() {
+        var request = NutritionSearchRequestFactory.newRequest(9, 900, List.of(), null, 1);
+        var results = service.searchNutrition(request);
+        assert results.size() == 1 : "Expected 1 item, b1ut got " + results.size();
+        assert results.get(0).equals(apple) : "Expected first item to be apple, but got " + results.get(0).name();
     }
 
 }
