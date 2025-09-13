@@ -122,4 +122,14 @@ public class NutritionSearchServiceTest {
         assert results.get(0).equals(cheesburger) : "Expected first item to be cheeseburger, but got " + results.get(0).name();
     }
 
+    @Test
+    public void testSeacheNutritionDataForNullCalories() {
+        var request = NutritionSearchRequestFactory.newRequest(null, null, List.of(), null, 1000);
+        var results = service.searchNutrition(request); 
+        assert results.size() == 3 : "Expected 3 items, but got " + results.size();
+        assert results.get(0).equals(apple) : "Expected first item to be apple, but got " + results.get(0).name();
+        assert results.get(1).equals(banana) : "Expected second item to be banana, but got " + results.get(1).name();
+        assert results.get(2).equals(cheesburger) : "Expected third item to be cheeseburger, but got " + results.get(2).name();
+    }
+
 }

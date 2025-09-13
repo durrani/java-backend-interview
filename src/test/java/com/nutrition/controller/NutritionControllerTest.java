@@ -35,6 +35,8 @@ class NutritionControllerTest {
                 .accept(APPLICATION_JSON))
             .andExpect(status().isOk())
             .andExpect(content().contentType(APPLICATION_JSON))
+            // //print content()
+            // .andDo(result -> System.out.println(result.getResponse().getContentAsString()))
             .andExpect(content().json(readJsonFile("all-foods.json"), true));
     }
 
@@ -80,7 +82,7 @@ class NutritionControllerTest {
     }
 
     @Nested
-    @Disabled("Until all steps implemented")
+    // @Disabled("Until all steps implemented")
     class AllParamsTest {
 
         @Test
