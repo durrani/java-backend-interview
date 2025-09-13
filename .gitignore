@@ -9,3 +9,5 @@ out/
 
 # Misc
 .DS_Store
+bin
+.vscode
