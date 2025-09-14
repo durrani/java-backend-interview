@@ -1,4 +1,5 @@
-Review of: https://github.com/durrani/java-backend-interview/blob/afeeb801838e3c1ba0d11072723ab066c3db521a/src/main/java/com/nutrition/service/NutritionSearchService.java
+Review of initial Service:
+https://github.com/durrani/java-backend-interview/blob/afeeb801838e3c1ba0d11072723ab066c3db521a/src/main/java/com/nutrition/service/NutritionSearchService.java
 
 Filtering Logic:
 The current filter is a placeholder (item -> true). Hence as instructed, I have implemented actual filtering based on request parameters (e.g., calories, fat rating).

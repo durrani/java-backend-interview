@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.nutrition.model.Food;
 
 @Repository
-@ConditionalOnProperty(name = NutritionSearchRepository.PROPERTY_NAME, havingValue = NutritionSearchRepository.EXTENSION_JSON)
+@ConditionalOnProperty(name = NutritionSearchRepository.EXTENSION_SOURCE, havingValue = NutritionSearchRepository.EXTENSION_JSON)
 public final class NutritionSearchJsonRepository implements NutritionSearchRepository {
 
     private String nutritionDataFile;
