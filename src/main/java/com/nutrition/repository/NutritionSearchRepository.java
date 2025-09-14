@@ -21,7 +21,7 @@ import static com.nutrition.util.CsvColumnHeading.SERVING_SIZE;
 import static com.nutrition.util.CsvColumnHeading.TOTAL_FAT_FIELD;
 
 public interface NutritionSearchRepository {
-	public String PROPERTY_NAME = "nutrition-search.data.repository.source.extension";
+	public String EXTENSION_SOURCE = "nutrition-search.data.repository.source.extension";
 	public String EXTENSION_CSV = "csv";
 	public String EXTENSION_JSON = "json";
 	public String EXTENSION_XML = "xml";

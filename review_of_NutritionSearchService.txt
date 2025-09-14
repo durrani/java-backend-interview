@@ -1,0 +1,40 @@
+Review of: https://github.com/durrani/java-backend-interview/blob/afeeb801838e3c1ba0d11072723ab066c3db521a/src/main/java/com/nutrition/service/NutritionSearchService.java
+
+Filtering Logic:
+The current filter is a placeholder (item -> true). Hence as instructed, I have implemented actual filtering based on request parameters (e.g., calories, fat rating).
+
+Separation of Concern:
+Move CSV handling into its own repository class. Hence as instructed, I have implemented this.
+
+Error Handling:
+Use a custom exception (like CsvFileLoadingException) instead of a generic RuntimeException for better clarity.
+
+Repository Abstraction:
+For better testability and flexibility, consider abstracting file access behind a repository interface.
+
+Logging:
+Add logging for file loading, errors and key operations to aid in debugging and monitoring.
+
+Validation:
+Add more robust validation for input fields and error messages for malformed CSV rows.
+
+Sort & Limit order:
+These should be interchanged, in the order first sort and then limit.
+
+Comparator:
+Keep business logic in the NutritionSearchService and move out Comparator to its own class(can be shared across multiple Services if required).
+
+Hard coded values:
+Values like 100g, 17.5 and 3 can be moved to either constants or to a configurable in application.properties.
+
+Unwanted code:
+rowData.get(SERVING_SIZE).equals("100 g") seems to be redundant as it seems nutrition.csv does not contain any other service size.
+Command:
+findstr /V /C:"100 g" src\main\resources\nutrition.csv
+,name,serving_size,calories,total_fat,saturated_fat,cholesterol,sodium,choline,folate,folic_acid,niacin,pantothenic_acid,riboflavin,thiamin,vitamin_a,vitamin_a_rae,carotene_alpha,carotene_beta,cryptoxanthin_beta,lutein_zeaxanthin,lucopene,vitamin_b12,vitamin_b6,vitamin_c,vitamin_d,vitamin_e,tocopherol_alpha,vitamin_k,calcium,copper,irom,magnesium,manganese,phosphorous,potassium,selenium,zink,protein,alanine,arginine,aspartic_acid,cystine,glutamic_acid,glycine,histidine,hydroxyproline,isoleucine,leucine,lysine,methionine,phenylalanine,proline,serine,threonine,tryptophan,tyrosine,valine,carbohydrate,fiber,sugars,fructose,galactose,glucose,lactose,maltose,sucrose,fat,saturated_fatty_acids,monounsaturated_fatty_acids,polyunsaturated_fatty_acids,fatty_acids_total_trans,alcohol,ash,caffeine,theobromine,water
+
+Unit test:
+Add more unit tests and make sure coverage is measured using Sonar Qube.
+
+Libraries:
+May consider using mapping library like MapStruct and lombok for builder pattern.

@@ -17,7 +17,7 @@ import com.opencsv.CSVReaderHeaderAware;
 import com.opencsv.exceptions.CsvValidationException;
 
 @Repository
-@ConditionalOnProperty(name = NutritionSearchRepository.PROPERTY_NAME, havingValue = NutritionSearchRepository.EXTENSION_CSV)
+@ConditionalOnProperty(name = NutritionSearchRepository.EXTENSION_SOURCE, havingValue = NutritionSearchRepository.EXTENSION_CSV)
 public final class NutritionSearchCsvRepository implements NutritionSearchRepository {
     
     private String nutritionDataFile;
